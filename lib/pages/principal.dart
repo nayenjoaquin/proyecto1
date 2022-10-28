@@ -36,7 +36,7 @@ class _PrincipalState extends State<Principal> {
       ),
       drawer: const NavBar(),
       appBar: AppBar(
-        title: const Text('Principal'),
+        title: const Text('Mensajes'),
         backgroundColor: const Color.fromARGB(255, 59, 61, 163),
       ),
       body: FutureBuilder(

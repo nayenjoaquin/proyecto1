@@ -20,7 +20,9 @@ class NavBar extends StatelessWidget {
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
                 child: Image.network(
-                  'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
+                  'http://www.udec.cl/panoramaweb2016/sites/default/files/DISE-participo-activamente-en-el-mes-de-la-lucha-contra-el-cancer_0.jpg',
+                  height: 100,
+                  width: 100,
                   fit: BoxFit.cover,
                 ),
               ),

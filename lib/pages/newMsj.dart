@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto1/pages/principal.dart';
 import 'package:proyecto1/services/msjService.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:proyecto1/global.dart';
@@ -22,7 +23,8 @@ class _NewMsjState extends State<NewMsj> {
     final response = await MsjService().validar(login, titulo, texto);
 
     if (response.statusCode == 201) {
-      Navigator.pop(context);
+      Navigator.push(context, 
+        MaterialPageRoute(builder: (context) => const Principal()));
     } else {
       CoolAlert.show(
         context: context,
@@ -59,8 +61,7 @@ class _NewMsjState extends State<NewMsj> {
                 labelText: 'Titulo',
               ),
             ),
-            SizedBox(
-              height: 500,
+            Expanded(
               child: TextField(
                 controller: contentController,
                 decoration: const InputDecoration(
