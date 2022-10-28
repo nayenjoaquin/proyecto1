@@ -28,14 +28,14 @@ class _LoginState extends State<Login> {
       await pref.setString('usuario', email);
 
       Global.login = email;
-      Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const Principal()));
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => const Principal()));
     } else {
       CoolAlert.show(
         context: context,
         type: CoolAlertType.error,
         title: 'Oops...',
-        text: 'El pepe ete sech',
+        text: 'Error al iniciar sesión',
         loopAnimation: false,
       );
     }
@@ -57,10 +57,11 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-
     const gap = SizedBox(height: 20);
     const loginImg = Image(
-      image: AssetImage('assets/loginImg-modified.png',),
+      image: AssetImage(
+        'assets/loginImg-modified.png',
+      ),
       height: 300,
     );
     const inputColor = Color.fromARGB(255, 201, 197, 255);
@@ -85,7 +86,9 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
-                loginImg,
+                const Expanded(
+                  child: loginImg,
+                ),
                 TextField(
                   controller: mailController,
                   decoration: const InputDecoration(
@@ -132,8 +135,7 @@ class _LoginState extends State<Login> {
                             textColor: Colors.white,
                             fontSize: 16.0);
                       } else {
-                        validarDatos(
-                            mailController.text, passController.text);
+                        validarDatos(mailController.text, passController.text);
                       }
                     },
                     style: ElevatedButton.styleFrom(
@@ -142,7 +144,8 @@ class _LoginState extends State<Login> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    child: const Text('Ingresar',
+                    child: const Text(
+                      'Ingresar',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.white,

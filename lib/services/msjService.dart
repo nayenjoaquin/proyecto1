@@ -1,23 +1,16 @@
+import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:proyecto1/models/mensajes.dart';
 
 class MsjService {
-  Future<Mensajes> getMsjs() async {
-    final response = await http.get(
-      Uri.parse('http://localhost:3000/api/msjs'),
+  Future<http.Response> validar(
+      String login, String titulo, String texto) async {
+    return await http.post(
+      Uri.parse('https://40fd422c6d4d.sa.ngrok.io/api/mensajes'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
-      },  
+      },
+      body: jsonEncode(
+          <String, String>{'login': login, 'titulo': titulo, 'texto': texto}),
     );
-
-    if (response.statusCode == 200) {
-      // If the server did return a 200 OK response,
-      // then parse the JSON.
-      return Mensajes.fromJson(response.body);
-    } else {
-      // If the server did not return a 200 OK response,
-      // then throw an exception.
-      throw Exception('Failed to load album');
-    }
   }
 }
