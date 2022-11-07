@@ -5,7 +5,7 @@ class MsjService {
   Future<http.Response> validar(
       String login, String titulo, String texto) async {
     return await http.post(
-      Uri.parse('https://40fd422c6d4d.sa.ngrok.io/api/mensajes'),
+      Uri.parse('https://fcfab46d0f16.sa.ngrok.io/api/mensajes'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
